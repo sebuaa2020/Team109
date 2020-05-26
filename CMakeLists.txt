@@ -8,3 +8,6 @@ include_directories(/opt/ros/melodic/include)
 include_directories(/usr/include/pcl-1.8)
 
 add_executable(Team109 main.cpp)
+
+# this will added at my local which make clion support intellisense
+# add_executable(main_controller ros_ws/src/my_pkg/src/main_controller.cpp)
