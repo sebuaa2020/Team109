@@ -11,3 +11,6 @@ add_executable(Team109 main.cpp)
 
 # this will added at my local which make clion support intellisense
 add_executable(main_controller ros_ws/src/my_pkg/src/main_controller.cpp)
+include_directories(ros_ws/src/my_pkg/include)
+add_library(utils ros_ws/src/my_pkg/src/utils.cpp ros_ws/src/my_pkg/include/utils.h)
+target_link_libraries(main_controller utils)

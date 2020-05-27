@@ -1,6 +1,9 @@
 #include <ros/ros.h>
+#include <unistd.h>
 #include <iostream>
 #include <cstdlib>
+
+#include "utils.h"
 
 
 std::string INSTRUCTION = "1 手动模式\n" \
@@ -27,6 +30,8 @@ std::string INSTRUCTION_VOICE = "支持语音为:\n" \
 
 std::string INSTRUCTION_UNKNOWN = "unknown instruction";
 
+std::string root_dir;
+
 
 void move_to_target_service() {
     std::cout << "This service will be supported later." << std::endl;
@@ -34,7 +39,11 @@ void move_to_target_service() {
 
 
 void detect_object_service() {
-    system("roslaunch wpb_home_tutorials obj_detect.launch &");
+    std::string cmd;
+    std::cout << "[INFO] root_dir: " << root_dir << std::endl;
+    cmd = "roslaunch wpb_home_tutorials obj_detect.launch > " + path_join(root_dir, "obj_detect.log") + " &";
+    std::cout << "[INFO] cmd: " << cmd << std::endl;
+    system((char*)(cmd.data()));
     system("rosrun my_pkg obj_detect_recv_marker");
 
     // TODO:: kill some nodes
@@ -99,6 +108,13 @@ void manual_service() {
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "main_controller");
+
+    // parse argv
+    int opt;
+    const char* optstring = "d:";
+    while ((opt = getopt(argc, argv, optstring)) != -1) {
+        root_dir = std::string(optarg);
+    }
 
     while (ros::ok()) {
         std::cout << INSTRUCTION << std::endl;

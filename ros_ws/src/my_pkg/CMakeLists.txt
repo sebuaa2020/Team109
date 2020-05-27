@@ -213,6 +213,10 @@ add_executable(main_controller src/main_controller.cpp)
 add_dependencies(main_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(main_controller ${catkin_LIBRARIES})
 
+include_directories(include)
+add_library(utils src/utils.cpp)
+target_link_libraries(main_controller utils)
+
 add_executable(voice_vel_ctrl src/voice_vel_ctrl.cpp)
 add_dependencies(voice_vel_ctrl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(voice_vel_ctrl ${catkin_LIBRARIES})
