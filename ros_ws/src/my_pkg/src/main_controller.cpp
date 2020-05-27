@@ -34,16 +34,23 @@ void move_to_target_service() {
 
 
 void detect_object_service() {
+    system("roslaunch wpb_home_tutorials obj_detect.launch &");
+    system("rosrun my_pkg obj_detect_recv_marker");
 
+    // TODO:: kill some nodes
 }
 
 
 void move_by_keyboard_service() {
+    system("rosrun my_pkg keyboard_vel_ctrl");
 
+    // TODO:: kill some nodes
 }
 
 
 void cruise_service() {
+    system("roslaunch waterplus_map_tools wpb_home_nav_test.launch");
+    system("rosrun waterplus_map_tools wp_saver");
 
 }
 

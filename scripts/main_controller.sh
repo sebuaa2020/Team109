@@ -17,5 +17,5 @@ catkin_make
 source ./devel/setup.zsh
 
 # launch
-roscore
+roslaunch wpr_simulation wpb_simple.launch &
 rosrun my_pkg main_controller
