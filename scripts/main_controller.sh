@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is to control robot move by keyboard
+# This script is to run main controller to run other service
 
 
 # cd ros_ws
@@ -17,6 +17,5 @@ catkin_make
 source ./devel/setup.zsh
 
 # launch
-roslaunch wpr_simulation wpb_simple.launch &
-roslaunch wpr_simulation wpb_rviz.launch &
-rosrun my_pkg keyboard_vel_ctrl
+roscore
+rosrun my_pkg main_controller

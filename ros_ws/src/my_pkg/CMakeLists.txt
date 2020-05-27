@@ -220,3 +220,7 @@ target_link_libraries(keyboard_vel_ctrl ${catkin_LIBRARIES})
 add_executable(voice_ctrl src/voice_ctrl.cpp)
 add_dependencies(voice_ctrl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(voice_ctrl ${catkin_LIBRARIES})
+
+add_executable(run_around_picture src/run_around_picture.cpp)
+add_dependencies(run_around_picture ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(run_around_picture ${catkin_LIBRARIES})

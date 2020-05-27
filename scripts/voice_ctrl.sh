@@ -16,7 +16,7 @@ catkin_make
 # setup environment
 source ./devel/setup.zsh
 
-# voice
+# launch
 roslaunch xfyun_waterplus iat_cn.launch &
 roslaunch xfyun_waterplus voice_cmd_wpb_home.launch &
 rosrun my_pkg voice_ctrl

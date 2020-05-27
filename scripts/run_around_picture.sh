@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script is to control robot move by keyboard
+# This script is to make robot run around map and picture
 
 
 # cd ros_ws
@@ -17,6 +17,4 @@ catkin_make
 source ./devel/setup.zsh
 
 # launch
-roslaunch wpr_simulation wpb_simple.launch &
-roslaunch wpr_simulation wpb_rviz.launch &
-rosrun my_pkg keyboard_vel_ctrl
+

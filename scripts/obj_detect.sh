@@ -15,7 +15,7 @@ catkin_make
 # setup environment
 source ./devel/setup.zsh
 
-# run object detection
+# launch
 roslaunch wpr_simulation wpb_simple.launch &
 roslaunch wpb_home_tutorials obj_detect.launch &
 rosrun my_pkg obj_detect_recv_marker
