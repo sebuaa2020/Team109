@@ -29,7 +29,7 @@ std::string INSTRUCTION_UNKNOWN = "unknown instruction";
 
 
 void move_to_target_service() {
-    system("");
+    std::cout << "This service will be supported later." << std::endl;
 }
 
 
@@ -42,26 +42,27 @@ void detect_object_service() {
 
 
 void move_by_keyboard_service() {
-    system("rosrun my_pkg keyboard_vel_ctrl");
+    system("rosrun wpr_simulation keyboard_vel_ctrl");
 
     // TODO:: kill some nodes
 }
 
 
+// TODO:: add this service
 void cruise_service() {
-    system("roslaunch waterplus_map_tools wpb_home_nav_test.launch");
-    system("rosrun waterplus_map_tools wp_saver");
-
+    std::cout << "This service will be supported later." << std::endl;
 }
 
 
+// TODO:: add this service
 void run_around_picture_service() {
-
+    std::cout << "This service will be supported later." << std::endl;
 }
 
 
+// TODO:: add this service
 void voice_service() {
-
+    std::cout << "This servide will be supported later." << std::endl;
 }
 
 

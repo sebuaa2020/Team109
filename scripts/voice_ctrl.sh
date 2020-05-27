@@ -14,7 +14,7 @@ cd ../ros_ws
 catkin_make
 
 # setup environment
-source ./devel/setup.zsh
+source ./devel/setup.bash
 
 # launch
 roslaunch xfyun_waterplus iat_cn.launch &

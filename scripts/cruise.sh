@@ -14,7 +14,7 @@ cd ../ros_ws
 catkin_make
 
 # setup environment
-source ./devel/setup.zsh
+source ./devel/setup.bash
 
 # launch
 roslaunch waterplus_map_tools wpb_home_nav_test.launch
