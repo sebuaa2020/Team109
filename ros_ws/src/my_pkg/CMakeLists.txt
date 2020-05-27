@@ -205,22 +205,6 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(my_pkg_pub
-  src/my_pkg_pub.cpp
-)
-add_dependencies(my_pkg_pub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(my_pkg_pub
-  ${catkin_LIBRARIES}
-)
-
-add_executable(my_pkg_sub
-  src/my_pkg_sub.cpp
-)
-add_dependencies(my_pkg_sub ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(my_pkg_sub
-  ${catkin_LIBRARIES}
-)
-
 add_executable(obj_detect_recv_marker src/obj_detect_recv_marker.cpp)
 add_dependencies(obj_detect_recv_marker ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(obj_detect_recv_marker ${catkin_LIBRARIES})
@@ -228,3 +212,11 @@ target_link_libraries(obj_detect_recv_marker ${catkin_LIBRARIES})
 add_executable(main_controller src/main_controller.cpp)
 add_dependencies(main_controller ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(main_controller ${catkin_LIBRARIES})
+
+add_executable(keyboard_vel_ctrl src/keyboard_vel_ctrl.cpp)
+add_dependencies(keyboard_vel_ctrl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(keyboard_vel_ctrl ${catkin_LIBRARIES})
+
+add_executable(voice_ctrl src/voice_ctrl.cpp)
+add_dependencies(voice_ctrl ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(voice_ctrl ${catkin_LIBRARIES})
