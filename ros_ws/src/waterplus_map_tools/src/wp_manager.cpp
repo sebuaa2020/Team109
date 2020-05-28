@@ -33,6 +33,7 @@
 *********************************************************************/
 /* @author Zhang Wanjie                                             */
 
+#include <unistd.h>
 #include <tinyxml.h>
 #include <ros/ros.h>
 #include <tf/transform_listener.h>
@@ -51,6 +52,17 @@ static ros::Publisher charger_pub;
 static visualization_msgs::Marker marker_waypoints;
 static visualization_msgs::Marker marker_chargers;
 static visualization_msgs::Marker text_marker;
+
+
+std::string path_join(std::string src_path, std::string add_path) {
+    if (src_path.at(src_path.length() - 1) == '/') {
+        return src_path + add_path;
+    } else {
+        // std::cout << "[INFO] src_path: " << src_path << std::endl;
+        return src_path.append("/") + add_path;
+    }
+}
+
 
 bool getNumOfWaypoints(waterplus_map_tools::GetNumOfWaypoints::Request &req, waterplus_map_tools::GetNumOfWaypoints::Response &res)
 {
@@ -393,7 +405,19 @@ int main(int argc, char** argv)
 
     ros::NodeHandle n_param("~");
     std::string strLoadFile;
-    n_param.param<std::string>("load", strLoadFile, "");
+    std::string root_dir;
+
+    // Added by qushuo
+    // parse command param
+    int opt;
+    const char *optstring = "d:";
+    while ((opt = getopt(argc, argv, optstring)) != -1) {
+        root_dir = std::string(optarg);
+    }
+    strLoadFile = path_join(root_dir, "waypoints.xml");
+    /////////////////////////////////////////////////
+
+
     if(strLoadFile.length() > 0)
     {
         ROS_INFO("Load waypoints from file : %s",strLoadFile.c_str());

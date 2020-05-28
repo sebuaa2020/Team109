@@ -14,3 +14,6 @@ add_executable(main_controller ros_ws/src/my_pkg/src/main_controller.cpp)
 include_directories(ros_ws/src/my_pkg/include)
 add_library(utils ros_ws/src/my_pkg/src/utils.cpp ros_ws/src/my_pkg/include/utils.h)
 target_link_libraries(main_controller utils)
+
+add_executable(wp_manager ros_ws/src/waterplus_map_tools/src/wp_manager.cpp)
+add_executable(run_around_picture ros_ws/src/my_pkg/src/run_around_picture.cpp)

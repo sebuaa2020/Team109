@@ -40,9 +40,9 @@ void move_to_target_service() {
 
 void detect_object_service() {
     std::string cmd;
-    std::cout << "[INFO] root_dir: " << root_dir << std::endl;
+    // std::cout << "[INFO] root_dir: " << root_dir << std::endl;
     cmd = "roslaunch wpb_home_tutorials obj_detect.launch > " + path_join(root_dir, "obj_detect.log") + " &";
-    std::cout << "[INFO] cmd: " << cmd << std::endl;
+    // std::cout << "[INFO] cmd: " << cmd << std::endl;
     system((char*)(cmd.data()));
     system("rosrun my_pkg obj_detect_recv_marker");
 
@@ -57,15 +57,37 @@ void move_by_keyboard_service() {
 }
 
 
-// TODO:: add this service
 void cruise_service() {
-    std::cout << "This service will be supported later." << std::endl;
+    std::string cmd;
+    cmd = "roslaunch waterplus_map_tools wpb_home_nav_test.launch > " +
+            path_join(root_dir, "wpb_home_nav.log") + " &";
+    system((char*)(cmd.data()));
+
+    cmd = "rosrun waterplus_map_tools wp_manager -d " + root_dir + " > " +
+            path_join(root_dir, "wp_manage.log") + " &";
+    system((char*)(cmd.data()));
+
+    char is_select;
+    while (true) {
+        std::cout << "导航点是否选择完毕[y/n]:" << std::endl;
+        std::cin >> is_select;
+        if (is_select == 'y')
+            break;
+    }
+    cmd = "rosrun waterplus_map_tools wp_saver > " + path_join(root_dir, "wp_saver.log") + " &";
+    system((char*)(cmd.data()));
+    system("rosrun waterplus_map_tools select_target");
+
+    // TODO:: kill some nodes
 }
 
 
-// TODO:: add this service
 void run_around_picture_service() {
-    std::cout << "This service will be supported later." << std::endl;
+    std::string cmd;
+    cmd = "rosrun wpb_home_apps my_save_image -d " + root_dir;
+    system((char*)(cmd.data()));
+
+    // TODO:: kill some nodes
 }
 
 

@@ -1,0 +1,39 @@
+... logging to /home/qushuo/.ros/log/5c8269e8-a0f6-11ea-b734-3c950961f4e5/roslaunch-qushuo-12948.log
+Checking log directory for disk usage. This may take awhile.
+Press Ctrl-C to interrupt
+Done checking log file disk usage. Usage is <1GB.
+]2;/home/qushuo/work/Team109/ros_ws/src/wpr_simulation/launch/wpb_simple.launch
+[1mstarted roslaunch server http://qushuo:41687/[0m
+
+SUMMARY
+========
+
+PARAMETERS
+ * /rosdistro: kinetic
+ * /rosversion: 1.12.14
+ * /use_sim_time: True
+
+NODES
+  /
+    gazebo (gazebo_ros/gzserver)
+    gazebo_gui (gazebo_ros/gzclient)
+    spawn_urdf (gazebo_ros/spawn_model)
+
+auto-starting new master
+[1mprocess[master]: started with pid [12969][0m
+[1mROS_MASTER_URI=http://localhost:11311[0m
+]2;/home/qushuo/work/Team109/ros_ws/src/wpr_simulation/launch/wpb_simple.launch http://localhost:11311
+[1msetting /run_id to 5c8269e8-a0f6-11ea-b734-3c950961f4e5[0m
+[1mprocess[rosout-1]: started with pid [12982][0m
+started core service [/rosout]
+[1mprocess[gazebo-2]: started with pid [12986][0m
+[1mprocess[gazebo_gui-3]: started with pid [13011][0m
+[1mprocess[spawn_urdf-4]: started with pid [13016][0m
+[spawn_urdf-4] killing on exit
+[gazebo_gui-3] killing on exit
+[gazebo-2] killing on exit
+[rosout-1] killing on exit
+[master] killing on exit
+shutting down processing monitor...
+... shutting down processing monitor complete
+[1mdone[0m
