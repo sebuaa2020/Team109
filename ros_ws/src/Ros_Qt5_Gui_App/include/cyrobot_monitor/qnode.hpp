@@ -112,7 +112,7 @@ private:
     QString power_max;
     QString power_min;
     QImage Mat2QImage(cv::Mat const& src);
-    void poseCallback(const geometry_msgs::PoseWithCovarianceStamped& pos);
+    void poseCallback(const nav_msgs::Odometry::ConstPtr& pos);
     void speedCallback(const nav_msgs::Odometry::ConstPtr& msg);
     void powerCallback(const std_msgs::Float32& message_holder);
     void imageCallback0(const sensor_msgs::ImageConstPtr& msg);

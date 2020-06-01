@@ -55,7 +55,7 @@
             <item>
              <widget class="QLineEdit" name="lineEdit_odm">
               <property name="text">
-               <string>raw_odom</string>
+               <string>/odom</string>
               </property>
              </widget>
             </item>
@@ -73,7 +73,7 @@
             <item>
              <widget class="QLineEdit" name="lineEdit_power">
               <property name="text">
-               <string>power</string>
+               <string>/power</string>
               </property>
              </widget>
             </item>
@@ -144,7 +144,7 @@
             <item>
              <widget class="QLineEdit" name="lineEdit">
               <property name="text">
-               <string>amcl_pose</string>
+               <string>/odom</string>
               </property>
              </widget>
             </item>

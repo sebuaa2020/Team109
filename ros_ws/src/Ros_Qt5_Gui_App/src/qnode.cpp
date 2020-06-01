@@ -33,9 +33,9 @@ QNode::QNode(int argc, char** argv ) :
     {
 //    读取topic的设置
     QSettings topic_setting("topic_setting","cyrobot_monitor");
-    odom_topic= topic_setting.value("topic_odom","raw_odom").toString();
-    power_topic=topic_setting.value("topic_power","power").toString();
-    pose_topic=topic_setting.value("topic_amcl","amcl_pose").toString();
+    odom_topic= topic_setting.value("topic_odom","/odom").toString();
+    power_topic=topic_setting.value("topic_power","/power").toString();
+    pose_topic=topic_setting.value("topic_amcl","/odom").toString();
     power_min=topic_setting.value("power_min","10").toString();
     power_max=topic_setting.value("power_max","12").toString();
 
@@ -97,9 +97,10 @@ bool QNode::init(const std::string &master_url, const std::string &host_url) {
 }
 
 //机器人位置话题的回调函数
-void QNode::poseCallback(const geometry_msgs::PoseWithCovarianceStamped& pos)
+void QNode::poseCallback(const nav_msgs::Odometry::ConstPtr& pos)
 {
-    emit position(pos.header.frame_id.data(), pos.pose.pose.position.x,pos.pose.pose.position.y,pos.pose.pose.orientation.z,pos.pose.pose.orientation.w);
+    emit position(pos->header.frame_id.data(), pos->pose.pose.position.x,
+                  pos->pose.pose.position.y, pos->pose.pose.orientation.z, pos->pose.pose.orientation.w);
 //    qDebug()<<<<" "<<pos.pose.pose.position.y;
 }
 void QNode::powerCallback(const std_msgs::Float32 &message_holder)
