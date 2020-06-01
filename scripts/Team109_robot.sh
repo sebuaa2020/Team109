@@ -18,7 +18,7 @@ source ./devel/setup.bash
 
 # mkdir output dir
 cd $CURR_DIR # first cd script folder
-if ! [ -d main_controller ]; then
+if ! [ -d Team109_robot ]; then
   mkdir main_controller
 fi
 
