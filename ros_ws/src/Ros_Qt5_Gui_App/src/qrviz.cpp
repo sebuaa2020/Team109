@@ -1,5 +1,6 @@
 #include "../include/cyrobot_monitor/qrviz.hpp"
 
+
 QRviz::QRviz(QVBoxLayout *layout,QString node_name)
 {
 
@@ -12,18 +13,18 @@ QRviz::QRviz(QVBoxLayout *layout,QString node_name)
 
 
     //创建rviz容器
-     render_panel_ = new rviz::RenderPanel;
+    render_panel_ = new rviz::RenderPanel;
     //向layout添加widget
-      layout->addWidget(render_panel_);
-      try
-      {
-          //初始化rviz控制对象
-          manager_=new rviz::VisualizationManager(render_panel_);
-      }
-      catch(QException e)
-      {
-          qDebug()<<e.what();
-      }
+    layout->addWidget(render_panel_);
+    try
+    {
+        //初始化rviz控制对象
+        manager_=new rviz::VisualizationManager(render_panel_);
+    }
+    catch(QException e)
+    {
+        qDebug()<<e.what();
+    }
 
 
     //获取当前rviz控制对象的 tool控制对象
@@ -37,18 +38,17 @@ QRviz::QRviz(QVBoxLayout *layout,QString node_name)
 }
 
 //显示robotModel
-  void QRviz::Display_RobotModel(bool enable)
-  {
-
-      if(RobotModel_==NULL)
-      {
-          RobotModel_=manager_->createDisplay("rviz/RobotModel","Qrviz RobotModel",enable);
-      }
-      else{
-          delete RobotModel_;
-          RobotModel_=manager_->createDisplay("rviz/RobotModel","Qrviz RobotModel",enable);
-      }
-  }
+void QRviz::Display_RobotModel(bool enable)
+{
+    if(RobotModel_==NULL)
+    {
+        RobotModel_=manager_->createDisplay("rviz/RobotModel","Qrviz RobotModel",enable);
+    }
+    else{
+        delete RobotModel_;
+        RobotModel_=manager_->createDisplay("rviz/RobotModel","Qrviz RobotModel",enable);
+    }
+}
 //显示grid
 void QRviz::Display_Grid(bool enable,QString Reference_frame,int Plan_Cell_count,QColor color)
 {
@@ -128,57 +128,59 @@ void QRviz::Display_LaserScan(bool enable,QString topic)
     manager_->startUpdate();
 }
 //设置全局显示
- void QRviz::SetGlobalOptions(QString frame_name,QColor backColor,int frame_rate)
- {
-     manager_->setFixedFrame(frame_name);
-     manager_->setProperty("Background Color",backColor);
-     manager_->setProperty("Frame Rate",frame_rate);
-     manager_->startUpdate();
- }
+void QRviz::SetGlobalOptions(QString frame_name,QColor backColor,int frame_rate)
+{
+    manager_->setFixedFrame(frame_name);
+    manager_->setProperty("Background Color",backColor);
+    manager_->setProperty("Frame Rate",frame_rate);
+    manager_->startUpdate();
+}
 
 // "rviz/MoveCamera";
 // "rviz/Interact";
 // "rviz/Select";
 // "rviz/SetInitialPose";
 // "rviz/SetGoal";
- //设置机器人导航初始位置
- void QRviz::Set_Pos()
- {
-     //获取设置Pos的工具
-     //添加工具
+//设置机器人导航初始位置
+void QRviz::Set_Pos()
+{
+    //获取设置Pos的工具
+    //添加工具
 
-     current_tool= tool_manager_->addTool("rviz/SetInitialPose");
-     //设置当前使用的工具为SetInitialPose（实现在地图上标点）
-     tool_manager_->setCurrentTool( current_tool );
-     manager_->startUpdate();
+    current_tool= tool_manager_->addTool("rviz/SetInitialPose");
+    //设置当前使用的工具为SetInitialPose（实现在地图上标点）
+    tool_manager_->setCurrentTool( current_tool );
+    manager_->startUpdate();
 
 
- }
- //设置机器人导航目标点
- void QRviz::Set_Goal()
- {
-     //添加工具
-     current_tool= tool_manager_->addTool("rviz/SetGoal");
-     //设置goal的话题
-     rviz::Property* pro= current_tool->getPropertyContainer();
-     pro->subProp("Topic")->setValue("/move_base_simple/goal");
-     //设置当前frame
-     manager_->setFixedFrame("map");
-     //设置当前使用的工具为SetGoal（实现在地图上标点）
-     tool_manager_->setCurrentTool( current_tool );
+}
+//设置机器人导航目标点
+void QRviz::Set_Goal()
+{
+    //添加工具
+    current_tool= tool_manager_->addTool("rviz/SetGoal");
+    //设置goal的话题
+    rviz::Property* pro= current_tool->getPropertyContainer();
+    pro->subProp("Topic")->setValue("/move_base_simple/goal");
+    //设置当前frame
+    manager_->setFixedFrame("map");
+    //设置当前使用的工具为SetGoal（实现在地图上标点）
+    tool_manager_->setCurrentTool( current_tool );
 
-     manager_->startUpdate();
+    manager_->startUpdate();
 
- }
- //显示tf坐标变换
- void QRviz::Display_TF(bool enable)
- {
-     if(TF_){delete TF_;TF_=NULL;}
-     TF_=manager_->createDisplay("rviz/TF","QTF",enable);
- }
- //显示导航相关
- void QRviz::Display_Navigate(bool enable,QString Global_topic,QString Global_planner,QString Local_topic,QString Local_planner)
- {
+}
+
+//显示tf坐标变换
+void QRviz::Display_TF(bool enable)
+{
+    if(TF_){delete TF_;TF_=NULL;}
+    TF_=manager_->createDisplay("rviz/TF","QTF",enable);
+}
+
+//显示导航相关
+void QRviz::Display_Navigate(bool enable,QString Global_topic,QString Global_planner,QString Local_topic,QString Local_planner)
+{
     if(Navigate_localmap) {delete Navigate_localmap; Navigate_localmap=NULL;}
     if(Navigate_localplanner) {delete Navigate_localplanner; Navigate_localplanner=NULL;}
     if(Navigate_globalmap) {delete Navigate_globalmap; Navigate_globalmap=NULL;}
@@ -200,7 +202,7 @@ void QRviz::Display_LaserScan(bool enable,QString topic)
     //更新画面显示
     manager_->startUpdate();
 
- }
+}
 
 void QRviz::createDisplay(QString display_name,QString topic_name)
 {
