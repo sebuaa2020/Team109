@@ -261,6 +261,8 @@ void MainWindow::connections()
     connect(ui.pushButton_add_topic,SIGNAL(clicked()),this,SLOT(slot_add_topic_btn()));
     //treewidget的值改变的槽函数
     //绑定treeiew所有控件的值改变函数
+    // added by qushuo
+    connect(ui.add_waypint_btn, SIGNAL(clicked()), this, SLOT(slot_add_waypoint()));
     for(int i=0;i<ui.treeWidget_rviz->topLevelItemCount();i++)
     {
         //top 元素
@@ -306,6 +308,12 @@ void MainWindow::connections()
     }
     //connect(ui.treeWidget_rviz,SIGNAL(itemChanged(QTreeWidgetItem*,int)),this,SLOT(slot_treewidget_item_value_change(QTreeWidgetItem*,int)));
 }
+
+// added by qushuo
+void MainWindow::slot_add_waypoint() {
+    map_rviz->Add_Waypoint();
+}
+
 //设置界面
 void MainWindow::slot_setting_frame()
 {
@@ -418,6 +426,11 @@ void MainWindow::slot_treewidget_item_check_change(int is_check)
 //        qDebug()<<topic_box->currentText()<<alpha->text()<<scheme->currentText();
         map_rviz->Display_Map(enable,topic_box->currentText(),alpha->text().toDouble(),scheme->currentText());
     }
+    // added by qushuo
+    else if (dis_name == "InteractiveMarkers") {
+        QComboBox *topic_box = (QComboBox *)ui.treeWidget_rviz->itemWidget(parentItem->child(1), 1);
+        map_rviz->Display_InteractiveMarker(enable, topic_box->currentText());
+    }
     else if(dis_name=="LaserScan")
     {
         QComboBox *topic_box=(QComboBox *) ui.treeWidget_rviz->itemWidget(parentItem->child(1),1);
@@ -490,6 +503,12 @@ void MainWindow::slot_treewidget_item_value_change(QString value)
         QComboBox *scheme=(QComboBox *) ui.treeWidget_rviz->itemWidget(parentItem->child(3),1);
         qDebug()<<topic_box->currentText()<<alpha->text()<<scheme->currentText();
         map_rviz->Display_Map(enable,topic_box->currentText(),alpha->text().toDouble(),scheme->currentText());
+    } else if (Dis_Name == "InteractiveMarkers") {
+        // added by qushuo
+        QCheckBox *che_box = (QCheckBox *)ui.treeWidget_rviz->itemWidget(parentItem, 1);
+        bool enable = che_box->isChecked();
+        QComboBox *topic_box = (QComboBox *)ui.treeWidget_rviz->itemWidget(parentItem->child(1), 1);
+        map_rviz->Display_InteractiveMarker(enable, topic_box->currentText());
     }
     else if(Dis_Name=="LaserScan")
     {
@@ -563,6 +582,18 @@ void MainWindow::slot_choose_topic(QTreeWidgetItem *choose)
         //绑定值改变了的事件
         connect(Map_Scheme,SIGNAL(currentTextChanged(QString)),this,SLOT(slot_treewidget_item_value_change(QString)));
         ui.treeWidget_rviz->setItemWidget(choose->child(3),1,Map_Scheme);
+    }
+    // added by qushuo
+    else if (choose->text(0) == "InteractiveMarkers") {
+        // qushuo debug
+        std::cout << "add interactive marker" << std::endl;
+        QComboBox *InteractiveMarker_Topic = new QComboBox();
+        InteractiveMarker_Topic->addItem("/waypoints_move/update");
+        InteractiveMarker_Topic->setEditable(true);
+        InteractiveMarker_Topic->setMaximumWidth(150);
+        widget_to_parentItem_map[InteractiveMarker_Topic] = choose;
+        ui.treeWidget_rviz->setItemWidget(choose->child(1), 1, InteractiveMarker_Topic);
+        connect(InteractiveMarker_Topic, SIGNAL(currentTextChanged(QString)), this, SLOT(slot_treewidget_item_value_change(QString)));
     }
     else if(choose->text(0)=="LaserScan")
     {

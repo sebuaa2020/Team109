@@ -95,6 +95,8 @@ public slots:
     void slot_treewidget_item_check_change(int);
     void slot_set_2D_Goal();
     void slot_set_2D_Pos();
+    // added by qushuo
+    void slot_add_waypoint();
     //设置界面
     void slot_setting_frame();
     //设置返航点

@@ -108,6 +108,24 @@ void QRviz::Display_Map(bool enable,QString topic,double Alpha,QString Color_Sch
     map_->setEnabled(enable);
     manager_->startUpdate();
 }
+
+// added by qushuo
+void QRviz::Display_InteractiveMarkers(bool enable, QString topic) {
+    if (!enable && InteractiveMarkers) {
+        Interactive_Marker->setEnabled(false);
+    }
+    if (InteractiveMarkers == NULL) {
+        InteractiveMarkers = manager_->createDisplay("rviz/InteractiveMarkers", "Obj Loader", enable);
+        InteractiveMarker->subProp("Topic")->setValue(topic);
+    } else {
+        delete InteractiveMarkers;
+        InteractiveMarkers = manager_->createDisplay("rviz/InteractiveMarkers", "Obj Loader", enable);
+        InteractiveMarkers->subProp("Topic")->setValue(topic);
+    }
+    InteractiveMarkers->setEnabled(enable);
+    manager_->startUpdate();
+}
+
 //显示激光雷达
 void QRviz::Display_LaserScan(bool enable,QString topic)
 {
@@ -171,6 +189,15 @@ void QRviz::Set_Goal()
 
 }
 
+// added by qushuo
+void QRviz::Add_Waypoint() {
+    current_tool = tool_manager_->addTool("rviz/AddWaypoint");
+    rviz::Property* pro = current_tool->getPropertyContainer();
+    pro->subProp("Topic")->setValue("/waterplus/add_waypoint");
+    manager_->setFixedFrame("map");
+    tool_manager_->setCurrentTool(current_tool);
+    manager_->startUpdate();
+}
 //显示tf坐标变换
 void QRviz::Display_TF(bool enable)
 {

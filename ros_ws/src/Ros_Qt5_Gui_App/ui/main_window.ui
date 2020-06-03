@@ -665,6 +665,18 @@ QProgressBar {
                  </property>
                 </widget>
                </item>
+               <!-- added by qushuo -->
+              <item>
+                <widget class="QPushButton" name="add_waypoint_btn">
+                  <property name="text">
+                    <string>add waypoints</string>
+                  </property>
+                  <property name="icon">
+                  <iconset resource="../resources/images.qrc">
+                   <normaloff>:/images/AddWaypoint.png</normaloff>:/images/AddWaypoint.png</iconset>
+                 </property>
+                </widget>
+              </item>
                <item>
                 <spacer name="horizontalSpacer_2">
                  <property name="orientation">

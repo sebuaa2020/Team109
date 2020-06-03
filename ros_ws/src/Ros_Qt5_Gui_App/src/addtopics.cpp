@@ -37,24 +37,24 @@ void AddTopics::initUi()
     //暂时隐藏子对像
     Axesstatus->setHidden(true);
 
-     Camera=new QTreeWidgetItem(QStringList()<<"Camera");
+    Camera=new QTreeWidgetItem(QStringList()<<"Camera");
     Camera->setIcon(0,QIcon("://images/classes/Camera.png"));
     parent->addChild(Camera);
 
 
-     DepthCloud=new QTreeWidgetItem(QStringList()<<"DepthCloud");
+    DepthCloud=new QTreeWidgetItem(QStringList()<<"DepthCloud");
     DepthCloud->setIcon(0,QIcon("://images/classes/DepthCloud.png"));
     parent->addChild(DepthCloud);
 
-     Effort=new QTreeWidgetItem(QStringList()<<"Effort");
+    Effort=new QTreeWidgetItem(QStringList()<<"Effort");
     Effort->setIcon(0,QIcon("://images/classes/Effort.png"));
     parent->addChild(Effort);
 
-     FluidPressure=new QTreeWidgetItem(QStringList()<<"FluidPressure");
+    FluidPressure=new QTreeWidgetItem(QStringList()<<"FluidPressure");
     FluidPressure->setIcon(0,QIcon("://images/classes/FluidPressure.png"));
     parent->addChild(FluidPressure);
 
-     Grid=new QTreeWidgetItem(QStringList()<<"Grid");
+    Grid=new QTreeWidgetItem(QStringList()<<"Grid");
     Grid->setIcon(0,QIcon("://images/classes/Grid.png"));
     parent->addChild(Grid);
     QTreeWidgetItem *gridstatus=new QTreeWidgetItem(QStringList()<<"Statue:");
@@ -62,27 +62,35 @@ void AddTopics::initUi()
     Grid->addChild(gridstatus);
     gridstatus->setHidden(true);
 
-     GridCells=new QTreeWidgetItem(QStringList()<<"GridCells");
+    GridCells=new QTreeWidgetItem(QStringList()<<"GridCells");
     GridCells->setIcon(0,QIcon("://images/classes/GridCells.png"));
     parent->addChild(GridCells);
 
-     Group=new QTreeWidgetItem(QStringList()<<"Group");
+    Group=new QTreeWidgetItem(QStringList()<<"Group");
     Group->setIcon(0,QIcon("://images/classes/Group.png"));
     parent->addChild(Group);
 
-     Illuminance=new QTreeWidgetItem(QStringList()<<"Illuminance");
+    Illuminance=new QTreeWidgetItem(QStringList()<<"Illuminance");
     Illuminance->setIcon(0,QIcon("://images/classes/Illuminance.png"));
     parent->addChild(Illuminance);
 
-     Image=new QTreeWidgetItem(QStringList()<<"Image");
+    Image=new QTreeWidgetItem(QStringList()<<"Image");
     Image->setIcon(0,QIcon("://images/classes/Image.png"));
     parent->addChild(Image);
 
-     InteractiveMarkers=new QTreeWidgetItem(QStringList()<<"InteractiveMarkers");
+    // added by qushuo
+    InteractiveMarkers=new QTreeWidgetItem(QStringList() << "InteractiveMarkers");
     InteractiveMarkers->setIcon(0,QIcon("://images/classes/InteractiveMarkers.png"));
     parent->addChild(InteractiveMarkers);
+    QTreeWidgetItem* InteractiveMarker_status = new QTreeWidgetItem(QStringList() << "Status");
+    InteractiveMarker_status->setIcon(0, QIcon("://images/ok.png"));
+    InteractiveMarkers->addChild(InteractiveMarker_status);
+    InteractiveMarker_status->setHidden(true);
+    QTreeWidgetItem* InteractiveMarkers_Topic = new QTreeWidgetItem(QStringList() << "Topic");
+    InteractiveMarkers->addChild(InteractiveMarkers_Topic);
+    InteractiveMarkers_Topic->setHidden(true);
 
-     LaserScan=new QTreeWidgetItem(QStringList()<<"LaserScan");
+    LaserScan=new QTreeWidgetItem(QStringList()<<"LaserScan");
     LaserScan->setIcon(0,QIcon("://images/classes/LaserScan.png"));
     parent->addChild(LaserScan);
     QTreeWidgetItem* Laser_status=new QTreeWidgetItem(QStringList()<<"Status");
@@ -94,7 +102,7 @@ void AddTopics::initUi()
     Laser_Topic->setHidden(true);
 
 
-     Map=new QTreeWidgetItem(QStringList()<<"Map");
+    Map=new QTreeWidgetItem(QStringList()<<"Map");
     Map->setIcon(0,QIcon("://images/classes/Map.png"));
     parent->addChild(Map);
     QTreeWidgetItem* Map_status=new QTreeWidgetItem(QStringList()<<"Status");
@@ -111,75 +119,75 @@ void AddTopics::initUi()
     Map->addChild(Map_Color_Scheme);
     Map_Color_Scheme->setHidden(true);
 
-     Marker=new QTreeWidgetItem(QStringList()<<"Marker");
+    Marker=new QTreeWidgetItem(QStringList()<<"Marker");
     Marker->setIcon(0,QIcon("://images/classes/Marker.png"));
     parent->addChild(Marker);
 
-     MarkerArray=new QTreeWidgetItem(QStringList()<<"MarkerArray");
+    MarkerArray=new QTreeWidgetItem(QStringList()<<"MarkerArray");
     MarkerArray->setIcon(0,QIcon("://images/classes/MarkerArray.png"));
     parent->addChild(MarkerArray);
 
-     Odometry=new QTreeWidgetItem(QStringList()<<"Odometry");
+    Odometry=new QTreeWidgetItem(QStringList()<<"Odometry");
     Odometry->setIcon(0,QIcon("://images/classes/Odometry.png"));
     parent->addChild(Odometry);
 
-     Path=new QTreeWidgetItem(QStringList()<<"Path");
+    Path=new QTreeWidgetItem(QStringList()<<"Path");
     Path->setIcon(0,QIcon("://images/classes/Path.png"));
     parent->addChild(Path);
 
-     PointCloud=new QTreeWidgetItem(QStringList()<<"PointCloud");
+    PointCloud=new QTreeWidgetItem(QStringList()<<"PointCloud");
     PointCloud->setIcon(0,QIcon("://images/classes/PointCloud.png"));
     parent->addChild(PointCloud);
 
-     PointCloud2=new QTreeWidgetItem(QStringList()<<"PointCloud2");
+    PointCloud2=new QTreeWidgetItem(QStringList()<<"PointCloud2");
     PointCloud2->setIcon(0,QIcon("://images/classes/PointCloud2.png"));
     parent->addChild(PointCloud2);
 
-     PointStamped=new QTreeWidgetItem(QStringList()<<"PointStamped");
+    PointStamped=new QTreeWidgetItem(QStringList()<<"PointStamped");
     PointStamped->setIcon(0,QIcon("://images/classes/PointStamped.png"));
     parent->addChild(PointStamped);
 
-     Polygon=new QTreeWidgetItem(QStringList()<<"Polygon");
+    Polygon=new QTreeWidgetItem(QStringList()<<"Polygon");
     Polygon->setIcon(0,QIcon("://images/classes/Polygon.png"));
     parent->addChild(Polygon);
 
-     Pose=new QTreeWidgetItem(QStringList()<<"Pose");
+    Pose=new QTreeWidgetItem(QStringList()<<"Pose");
     Pose->setIcon(0,QIcon("://images/classes/Pose.png"));
     parent->addChild(Pose);
 
-     PoseArray=new QTreeWidgetItem(QStringList()<<"PoseArray");
+    PoseArray=new QTreeWidgetItem(QStringList()<<"PoseArray");
     PoseArray->setIcon(0,QIcon("://images/classes/PoseArray.png"));
     parent->addChild(PoseArray);
 
-     PoseWithCovariance=new QTreeWidgetItem(QStringList()<<"PoseWithCovariance");
+    PoseWithCovariance=new QTreeWidgetItem(QStringList()<<"PoseWithCovariance");
     PoseWithCovariance->setIcon(0,QIcon("://images/classes/PoseWithCovariance.png"));
     parent->addChild(PoseWithCovariance);
 
-     Range=new QTreeWidgetItem(QStringList()<<"Range");
+    Range=new QTreeWidgetItem(QStringList()<<"Range");
     Range->setIcon(0,QIcon("://images/classes/Range.png"));
     parent->addChild(Range);
 
-     RelativeHumidity=new QTreeWidgetItem(QStringList()<<"RelativeHumidity");
+    RelativeHumidity=new QTreeWidgetItem(QStringList()<<"RelativeHumidity");
     RelativeHumidity->setIcon(0,QIcon("://images/classes/RelativeHumidity.png"));
     parent->addChild(RelativeHumidity);
 
-     RobotModel=new QTreeWidgetItem(QStringList()<<"RobotModel");
+    RobotModel=new QTreeWidgetItem(QStringList()<<"RobotModel");
     RobotModel->setIcon(0,QIcon("://images/classes/RobotModel.png"));
     parent->addChild(RobotModel);
 
-     TF=new QTreeWidgetItem(QStringList()<<"TF");
+    TF=new QTreeWidgetItem(QStringList()<<"TF");
     TF->setIcon(0,QIcon("://images/classes/TF.png"));
     parent->addChild(TF);
 
-     Temperature=new QTreeWidgetItem(QStringList()<<"Temperature");
+    Temperature=new QTreeWidgetItem(QStringList()<<"Temperature");
     Temperature->setIcon(0,QIcon("://images/classes/Temperature.png"));
     parent->addChild(Temperature);
 
-     WrenchStamped=new QTreeWidgetItem(QStringList()<<"WrenchStamped");
+    WrenchStamped=new QTreeWidgetItem(QStringList()<<"WrenchStamped");
     WrenchStamped->setIcon(0,QIcon("://images/classes/WrenchStamped.png"));
     parent->addChild(WrenchStamped);
 
-     Imu=new QTreeWidgetItem(QStringList()<<"Imu");
+    Imu=new QTreeWidgetItem(QStringList()<<"Imu");
     Imu->setIcon(0,QIcon("://images/classes/Imu.png"));
     parent->addChild(Imu);
 

@@ -36,12 +36,17 @@ public:
     void Display_Navigate(bool enable,QString Global_topic,QString Global_planner,QString Local_topic,QString Local_planner);
     //显示tf坐标变换
     void Display_TF(bool enable);
-    void Set_Pos();
-    void Set_Goal();
-    //发布goal话题的坐标
-    void Send_Goal_topic();
     //显示robotmodel
     void Display_RobotModel(bool enable);
+    // added by qushuo
+    void Display_InteractiveMarkers(bool enable, QString topic);
+    void Set_Pos();
+    void Set_Goal();
+    //added by qushuo
+    void Add_Waypoint();   
+    //发布goal话题的坐标
+    void Send_Goal_topic();
+    
 private:
 
     QVBoxLayout *layout;
@@ -62,6 +67,8 @@ protected:
     rviz::Display* Navigate_globalplanner=NULL;
     rviz::Display* Navigate_amcl=NULL;
     rviz::Display* RobotModel_=NULL;
+    // added by qushuo
+    rviz::Display* InteractiveMarkers = NULL;
     //rviz工具
     rviz::Tool *current_tool;
     //rviz工具控制器
