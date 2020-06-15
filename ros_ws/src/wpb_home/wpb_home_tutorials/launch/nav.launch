@@ -1,11 +1,12 @@
 <launch>
   <master auto="start"/>
 
-  <!-- Run wpb_home core -->
+  <!-- Run wpb_home core modified by qushuo
   <node pkg="wpb_home_bringup" type="wpb_home_core" name="wpb_home_core" output="screen">
     <param name="serial_port" type="string" value="/dev/ftdi"/> 
     <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
   </node>
+  -->
 
   <!--- Run Rplidar -->
   <node name="rplidarNode"          pkg="rplidar_ros"  type="rplidarNode" output="screen">
@@ -50,6 +51,9 @@
   <param name="use_gui" value="$(arg gui)"/>
 
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- modified by qushuo
   <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  -->
 
 </launch>

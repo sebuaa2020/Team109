@@ -1,2 +1,5 @@
 ros-kinetic-map-server
 ros-kinetic-navigation
+ros-kinetic-qt-create
+ros-kinetic-qt-build
+qtmultimedia5-dev

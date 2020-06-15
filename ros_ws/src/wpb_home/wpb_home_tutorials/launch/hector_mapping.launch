@@ -11,8 +11,10 @@
     <rosparam file="$(find wpb_home_bringup)/config/wpb_home.yaml" command="load" />
   </node>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
 
+  <!-- modified by qushuo
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+  -->
   <node pkg="hector_mapping" type="hector_mapping" name="hector_mapping" output="screen">
   <!-- Frame names -->
   <param name="pub_map_odom_transform" value="true"/>
